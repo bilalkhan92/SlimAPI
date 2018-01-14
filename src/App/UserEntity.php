@@ -1,4 +1,5 @@
 <?php
+
 class UserEntity
 {
     protected $id;

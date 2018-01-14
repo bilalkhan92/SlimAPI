@@ -1,5 +1,5 @@
 <?php
-$config['displayErrorDetails'] = false;
+$config['displayErrorDetails'] = true;
 $config['addContentLengthHeader'] = false;
 $config['db']['host']   = getenv("DB_HOST");
 $config['db']['user']   = getenv("DB_USER");
