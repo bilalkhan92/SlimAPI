@@ -15,7 +15,7 @@ $container['db'] = function ($container) {
 $container = $app->getContainer();
 
 $container['logger'] = function($container) {
-    $logger = new \Monolog\Logger('my_logger');
+    $logger = new \Monolog\Logger('test_logger');
     $file_handler = new \Monolog\Handler\StreamHandler('../logs/app.log');
     $logger->pushHandler($file_handler);
     return $logger;

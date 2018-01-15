@@ -7,7 +7,7 @@ class UserMapper extends Mapper
         $stmt = $this->db->query($sql);
         $results = [];
         while($row = $stmt->fetch()) {
-            $results[] = new UserEntity($row);
+            $results[] = $row;
         }
         return $results;
     }
@@ -18,19 +18,21 @@ class UserMapper extends Mapper
             where id = :user_id";
         $stmt = $this->db->prepare($sql);
         $result = $stmt->execute(["user_id" => $user_id]);
-        if($result) {
-            return new UserEntity($stmt->fetch());
+        $result = array($stmt->fetch());
+
+        if(count($result[0]) > 1) {
+            return $result;
         }
     }
 
     public function save(UserEntity $user) {
         $sql = "insert into tbl_profile
-            (FName, LName, status) values
-            (:FName, :LName, :status)";
+            (email, password, status) values
+            (:email, :password, :status)";
         $stmt = $this->db->prepare($sql);
         $result = $stmt->execute([
-            "FName" => $user->getFName(),
-            "LName" => $user->getLName(),
+            "email" => $user->getemail(),
+            "password" => $user->getpassword(),
             "status" => $user->getstatus(),
         ]);
         if(!$result) {

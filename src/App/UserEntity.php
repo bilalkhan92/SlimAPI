@@ -3,8 +3,8 @@
 class UserEntity
 {
     protected $id;
-    protected $FName;
-    protected $LName;
+    protected $email;
+    protected $password;
     protected $status;
     /**
      * Accept an array of data matching properties of this class
@@ -17,18 +17,18 @@ class UserEntity
         if(isset($data['id'])) {
             $this->id = $data['id'];
         }
-        $this->FName = $data['FName'];
-        $this->LName = $data['LName'];
+        $this->email = $data['email'];
+        $this->password = $data['password'];
         $this->status = $data['status'];
     }
     public function getId() {
         return $this->id;;
     }
-    public function getFName() {
-        return $this->FName;
+    public function getemail() {
+        return $this->email;
     }
-    public function getLName() {
-        return $this->LName;
+    public function getpassword() {
+        return $this->password;
     }
     public function getstatus() {
         return $this->status;
